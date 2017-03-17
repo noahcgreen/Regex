@@ -67,13 +67,11 @@ extension RegularExpression: ExpressibleByUnicodeScalarLiteral, ExpressibleByExt
         
         public init(stringInterpolation strings: RegularExpression...) {
             let pattern = strings.map({ $0.pattern }).joined()
-            print(strings, pattern)
             self = try! RegularExpression(pattern)
         }
         
         public init<T>(stringInterpolationSegment expr: T) {
             let stringValue = String(describing: expr)
-            print("EXPR", expr, stringValue)
             self = try! RegularExpression(stringValue, options: .ignoreMetacharacters)
         }
         
