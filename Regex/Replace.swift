@@ -6,13 +6,10 @@ public extension RegularExpression {
     func replaceMatches(
         in string: inout String,
         options: NSRegularExpression.MatchingOptions = [],
-        range: Range<Int>? = nil,
         with template: String
         ) {
-        let range = range ?? 0..<string.characters.count
-        
         let nsString = NSMutableString(string: string)
-        regularExpression.replaceMatches(in: nsString, options: options, range: NSRange(range), withTemplate: template)
+        regularExpression.replaceMatches(in: nsString, options: options, range: NSRange(string.range), withTemplate: template)
         string = nsString as String
     }
     
